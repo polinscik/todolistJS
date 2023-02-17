@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="stylesheet" href="/styles/normalize.css" />
+        <link rel="stylesheet" href="/styles/style.css" />
+    </head>
+    <body>
+        <main>
+            <h1 class="title">Планировщик задач</h1>
+            <div class="addTaskBox">
+                <h2 class="subtitle">Добавить задачу</h2>
+                <input
+                    type="text"
+                    placeholder="Задача"
+                    class="addTask"
+                    id="addTask"
+                />
+                <input
+                    type="button"
+                    value="Добавить"
+                    class="button buttonAdd"
+                    id="buttonAdd"
+                />
+            </div>
+            <div class="taskList">
+                <h2 class="subtitle">Список задач</h2>
+                <div class="taskBox">
+                    <div class="taskBox__notasks" id="noTasks">Нет задач</div>
+                </div>
+                <input
+                    type="button"
+                    value="Очистить список задач"
+                    class="button buttonRemove"
+                    id="buttonRemove"
+                />
+            </div>
+        </main>
+        <script src="/cycle.js"></script>
+    </body>
+</html>
