@@ -4,8 +4,6 @@ const task = document.getElementById("addTask");
 const taskBox = document.getElementsByClassName("taskBox");
 const noTasksDiv = document.getElementById("noTasks");
 
-const btnRemove = document.getElementById("buttonRemove");
-
 btnAdd.addEventListener("click", function () {
     if (task.value) {
         createGoal();
@@ -31,9 +29,10 @@ function createGoal() {
     taskCard.appendChild(taskImg);
 }
 
-const checkmarks = document.getElementsByClassName("checkmark");
-
 function colorTheCheckmarks() {
+    const checkmarks = document.getElementsByClassName("checkmark");
+    console.log(checkmarks);
+
     for (let checkmark of checkmarks) {
         checkmark.addEventListener("click", function (evt) {
             if (!evt.target.style.backgroundColor) {
@@ -46,10 +45,25 @@ function colorTheCheckmarks() {
     }
 }
 
+const btnRemove = document.getElementById("buttonRemove");
+
 btnRemove.addEventListener("click", function () {
-    let allTasks = document.getElementsByClassName("task");
+    const allTasks = document.getElementsByClassName("task");
     for (let oneTask of allTasks) {
         oneTask.remove();
     }
     noTasksDiv.style.display = "block";
 });
+
+// function checkTasks() {
+//     let allTasks = document.getElementsByClassName("task");
+//     if (allTasks.length >= 1) {
+//         btnRemove.setAttribute("disabled", "true");
+//         btnRemove.style.backgroundColor = "#8d9ab0";
+//     } else if ((allTasks.length = 0)) {
+//         btnRemove.removeAttribute("disabled");
+//         btnRemove.style.backgroundColor = "rgb(68, 161, 218)";
+//     }
+// }
+
+//не работают иконки когда больше 1 задачи, не работает кнопка удалить когда больше 1 задачи
