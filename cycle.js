@@ -8,8 +8,8 @@ btnAdd.addEventListener("click", function () {
     if (task.value) {
         createGoal();
         task.value = "";
-        colorTheCheckmarks();
         noTasksDiv.style.display = "none";
+        checkTasks();
     }
 });
 
@@ -26,44 +26,42 @@ function createGoal() {
     const taskImg = document.createElement("img");
     taskImg.classList.add("checkmark");
     taskImg.setAttribute("src", "/assets/images/check.svg");
+    colorTheCheckmark(taskImg);
     taskCard.appendChild(taskImg);
 }
 
-function colorTheCheckmarks() {
-    const checkmarks = document.getElementsByClassName("checkmark");
-    console.log(checkmarks);
-
-    for (let checkmark of checkmarks) {
-        checkmark.addEventListener("click", function (evt) {
-            if (!evt.target.style.backgroundColor) {
-                evt.target.style.backgroundColor = "#05b308";
-                evt.target.style.borderRadius = "50%";
-            } else {
-                evt.target.style.backgroundColor = "";
-            }
-        });
-    }
+function colorTheCheckmark(el) {
+    el.addEventListener("click", function (evt) {
+        if (!evt.target.style.backgroundColor) {
+            evt.target.style.backgroundColor = "#05b308";
+            evt.target.style.borderRadius = "50%";
+        } else {
+            evt.target.style.backgroundColor = "";
+        }
+    });
 }
 
 const btnRemove = document.getElementById("buttonRemove");
 
+//кнопка очистить список задач
 btnRemove.addEventListener("click", function () {
-    const allTasks = document.getElementsByClassName("task");
-    for (let oneTask of allTasks) {
-        oneTask.remove();
+    const allTasks = document.querySelectorAll(".task");
+    for (const task1 of allTasks) {
+        task1.remove();
     }
     noTasksDiv.style.display = "block";
+    checkTasks();
 });
 
-// function checkTasks() {
-//     let allTasks = document.getElementsByClassName("task");
-//     if (allTasks.length >= 1) {
-//         btnRemove.setAttribute("disabled", "true");
-//         btnRemove.style.backgroundColor = "#8d9ab0";
-//     } else if ((allTasks.length = 0)) {
-//         btnRemove.removeAttribute("disabled");
-//         btnRemove.style.backgroundColor = "rgb(68, 161, 218)";
-//     }
-// }
-
-//не работают иконки когда больше 1 задачи, не работает кнопка удалить когда больше 1 задачи
+function checkTasks() {
+    const allTasks = document.querySelectorAll(".task");
+    console.log(allTasks);
+    if (allTasks.length == 0) {
+        btnRemove.setAttribute("disabled", "true");
+        btnRemove.style.backgroundColor = "#8d9ab0";
+    } else if (allTasks.length > 0) {
+        btnRemove.removeAttribute("disabled");
+        btnRemove.style.backgroundColor = "rgb(68, 161, 218)";
+    }
+}
+checkTasks();
