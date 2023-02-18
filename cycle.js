@@ -55,7 +55,6 @@ btnRemove.addEventListener("click", function () {
 
 function checkTasks() {
     const allTasks = document.querySelectorAll(".task");
-    console.log(allTasks);
     if (allTasks.length == 0) {
         btnRemove.setAttribute("disabled", "true");
         btnRemove.style.backgroundColor = "#8d9ab0";
